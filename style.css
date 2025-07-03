@@ -125,7 +125,8 @@ nav li a:hover::after {
 
 /* --- Dropdown Menu --- */
 .content-dropdown {
-  display: none;
+  max-height: 0;
+  overflow: hidden;
   position: absolute;
   top: 100%;
   left: 0;
@@ -133,18 +134,15 @@ nav li a:hover::after {
   min-width: 200px;
   box-shadow: var(--shadow);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
-  padding: 10px 0;
+  padding: 0;
   z-index: 999;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
   border-top: 3px solid var(--primary-color);
 }
 
-.nav-item:hover .content-dropdown {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
+.content-dropdown.show {
+  max-height: 850px; /* Adjust as needed */
+  padding: 10px 0;
 }
 
 .content-dropdown a {
