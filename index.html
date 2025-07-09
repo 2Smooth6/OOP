@@ -124,6 +124,7 @@
   
   <footer>
     <p class="copyright" id="copyright-text"></p>
+    <p>Reserve The Copyright</p>
     <p class="directed-by">Directed by<br>Mr. Thianchai Dejdee<br>Mr. Korawit Sawangjit</p>
   </footer>
 
@@ -182,7 +183,18 @@
       updateTime();
       setInterval(updateTime, 1000);
       generateCalendar();
-      setCopyright();
+
+      const contentNavItem = document.querySelector('.nav-item a[href="#"]')?.parentElement;
+      const contentDropdown = document.getElementById('contentDropdown');
+
+      if (contentNavItem && contentDropdown) {
+        contentNavItem.addEventListener('click', function(event) {
+          if (event.target.tagName === 'A' && event.target.getAttribute('href') === '#') {
+            event.preventDefault();
+            contentDropdown.classList.toggle('show');
+          }
+        });
+      }
     });
   </script>
 </body>
